@@ -1,0 +1,9 @@
+{
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "destination": "https://bit.ly/3z3gm5E",
+      "permanent": true
+    }
+  ]
+}
