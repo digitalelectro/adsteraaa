@@ -7,9 +7,10 @@ ZERO-CODING QUICK START (COPY/PASTE)
 2) Put your Vertex service-account key file anywhere on your computer. Remember the full path (for example, C:\Users\You\Downloads\vertex-key.json or /Users/you/Downloads/vertex-key.json).
 
 3) The download does NOT include a .env file. In the adsteraaa folder, make a copy of .env.example named .env (or just rename .env.example to .env) and fill in three lines (keep it in the same folder as app.py):
-   PROJECT_ID=your-gcp-project-id
-   LOCATION=your-vertex-region (for example: us-central1)
+   PROJECT_ID=your-gcp-project-id   (VERTEX_PROJECT_ID also works)
+   LOCATION=your-vertex-region (for example: us-central1)   (VERTEX_LOCATION also works)
    GOOGLE_APPLICATION_CREDENTIALS=/full/path/to/your/vertex-key.json
+   Optional: set VERTEX_TEXT_MODEL and VERTEX_IMAGE_MODEL if you want to pick specific models.
 
 4) Start the app:
    - On Windows: double-click scripts/run_local.bat (Command Prompt will open and install/run automatically).

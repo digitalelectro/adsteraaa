@@ -38,9 +38,11 @@ def parse_lines(raw: str) -> List[dict]:
     return data
 
 
-default_project_id = os.getenv("PROJECT_ID", "")
-default_location = os.getenv("LOCATION", "us-central1")
+default_project_id = os.getenv("PROJECT_ID") or os.getenv("VERTEX_PROJECT_ID", "")
+default_location = os.getenv("LOCATION") or os.getenv("VERTEX_LOCATION", "us-central1")
 default_sa_path = os.getenv("GOOGLE_APPLICATION_CREDENTIALS", "")
+default_text_model = os.getenv("VERTEX_TEXT_MODEL", "gemini-1.5-pro-002")
+default_image_model = os.getenv("VERTEX_IMAGE_MODEL", "imagegeneration@006")
 
 
 with st.sidebar:
@@ -63,6 +65,16 @@ with st.sidebar:
         help="These style notes will be appended to EVERY prompt so the visuals stay consistent.",
     )
     aspect_label = st.selectbox("Image size (aspect ratio)", list(SIZE_PRESETS.keys()), index=3)
+    text_model = st.text_input(
+        "Text model (Gemini)",
+        value=default_text_model,
+        help="Gemini model name for turning paragraphs into prompts.",
+    )
+    image_model = st.text_input(
+        "Image model",
+        value=default_image_model,
+        help="Vertex image model name for rendering prompts.",
+    )
 
 
 st.subheader("1) Load timestamped script lines")
@@ -98,6 +110,8 @@ if st.button("Build segments and generate prompts", disabled=not lines or not pr
             project_id=project_id.strip(),
             location=location.strip(),
             service_account_json=Path(service_account_path) if service_account_path.strip() else None,
+            text_model=text_model.strip() or default_text_model,
+            image_model=image_model.strip() or default_image_model,
         )
         for segment in segments:
             prompt = generate_image_prompt(
@@ -126,6 +140,8 @@ if generated_prompts:
                 project_id=project_id.strip(),
                 location=location.strip(),
                 service_account_json=Path(service_account_path) if service_account_path.strip() else None,
+                text_model=text_model.strip() or default_text_model,
+                image_model=image_model.strip() or default_image_model,
             )
             prompts_only = [item["prompt"] for item in generated_prompts]
             images = generate_images(prompts_only, size_label=aspect_label, config=config)
