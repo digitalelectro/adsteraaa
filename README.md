@@ -11,6 +11,8 @@ If you have **zero coding experience**, follow the step-by-step “Quick start (
 
 ## Quick start (no coding knowledge)
 
+> **If you don't see the files on GitHub:** This project currently lives on the `work` branch. On GitHub, click the branch dropdown (usually shows `main` or `master`) and choose **`work`**. If you cloned the repo locally, run `git checkout work` to switch to the code branch. If you created this repo yourself and the branch is only on your machine, push it with `git push origin work`, then refresh GitHub.
+
 ### A. Download the project
 1. If you have Git installed, open a terminal/command prompt and run:
    ```bash
