@@ -1,8 +1,31 @@
 # Script-to-Image Automation (Vertex AI)
 
-This app segments your timestamped script, generates image prompts with Gemini, and creates matching images with Vertex AI's image model. It is designed for non-Python users and works locally with a single command once configured.
+This app segments your timestamped script, generates image prompts with Gemini, and creates matching images with Vertex AI's image model. It is designed for non-Python users and can run with **one script** after you point it to your key.
 
-If you have **zero coding experience**, follow the step-by-step “Quick start (no coding knowledge)” below. Everything happens in a terminal/command prompt, but you will copy/paste the exact commands provided here.
+If you have **zero coding experience**, start with the "Simplest path (one script to run)". It tells you exactly what to click or paste.
+
+> **If you don't see the files on GitHub:** This project currently lives on the `work` branch. On GitHub, click the branch dropdown (usually shows `main` or `master`) and choose **`work`**. If you cloned the repo locally, run `git checkout work` to switch to the code branch. If you created this repo yourself and the branch is only on your machine, push it with `git push origin work`, then refresh GitHub.
+
+## Simplest path (one script to run)
+1) **Download the code** (clone or Download ZIP) and open the `adsteraaa` folder.
+2) **Tell the app where your key is**:
+   - Make a copy of the sample file: `cp .env.example .env` (on Windows, you can copy the file in File Explorer).
+   - Open `.env` in any text editor and set:
+     ```
+     GOOGLE_APPLICATION_CREDENTIALS=/full/path/to/vertex-sa.json
+     PROJECT_ID=your-gcp-project-id
+     LOCATION=us-central1  # or your chosen Vertex region
+     ```
+3) **Run one script**:
+   - **Windows:** double-click `scripts\run_local.bat` (or run it from Command Prompt). It will create the Python environment, install everything, and open the app.
+   - **Mac/Linux:** open Terminal in the project folder and run:
+     ```bash
+     ./scripts/run_local.sh
+     ```
+     If you see a "permission denied" message once, run `chmod +x scripts/run_local.sh` and try again.
+4) When the terminal stops scrolling, it will show a link like `http://localhost:8501`. Click it (or copy/paste it into your browser). Use the sidebar to pick your project/region and style, then click the buttons in order: **Build segments and generate prompts** → **Generate images with Vertex**.
+
+That is all you need. The scripts automatically create a virtual environment, install packages, and reuse your `.env` settings each time.
 
 ## What you need
 - Python 3.10+ installed on your computer. If you do not have it, download it from https://www.python.org/downloads/ (Windows users: check “Add Python to PATH” during installation).
@@ -10,8 +33,6 @@ If you have **zero coding experience**, follow the step-by-step “Quick start (
 - A downloaded service-account JSON key file (this is the file you will point the app to)
 
 ## Quick start (no coding knowledge)
-
-> **If you don't see the files on GitHub:** This project currently lives on the `work` branch. On GitHub, click the branch dropdown (usually shows `main` or `master`) and choose **`work`**. If you cloned the repo locally, run `git checkout work` to switch to the code branch. If you created this repo yourself and the branch is only on your machine, push it with `git push origin work`, then refresh GitHub.
 
 ### A. Download the project
 1. If you have Git installed, open a terminal/command prompt and run:
