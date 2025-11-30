@@ -2,6 +2,8 @@
 
 This app segments your timestamped script, generates image prompts with Gemini, and creates matching images with Vertex AI's image model. It is designed for non-Python users and can run with **one script** after you point it to your key.
 
+> **Why the code was updated:** recent changes pin specific dependency versions so Windows installs work without extra setup. If you tried earlier and saw `urllib3`/`google-auth` errors, just rerun the helper script with your `.env` in place.
+
 If you have **zero coding experience**, start with the "Simplest path (one script to run)". It tells you exactly what to click or paste.
 
 > **If you don't see the files on GitHub:** This project currently lives on the `work` branch. On GitHub, click the branch dropdown (usually shows `main` or `master`) and choose **`work`**. If you cloned the repo locally, run `git checkout work` to switch to the code branch. If you created this repo yourself and the branch is only on your machine, push it with `git push origin work`, then refresh GitHub.
