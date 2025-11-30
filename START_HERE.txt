@@ -22,4 +22,4 @@ ZERO-CODING QUICK START (COPY/PASTE)
 
 7) Upload your timestamped JSON lines and click the big buttons in order: "Build segments and generate prompts" then "Generate images with Vertex."
 
-If anything fails, recheck the path to your key file and that your service account has the Vertex AI User role.
+If anything fails, recheck the path to your key file and that your service account has the Vertex AI User role. On Windows, if you see dependency errors mentioning `urllib3` or `google-auth`, rerun `scripts\run_local.bat` from an open Command Prompt—the requirements are pinned to compatible versions and will reinstall cleanly.
